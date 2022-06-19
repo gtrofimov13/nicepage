@@ -36,8 +36,7 @@ pipeline {
             steps {
                sh'''
                   echo "Deploying"
-                  docker-compose down
-                  docker-compose up -d
+                  $docker-compose up -d --no-deps --build static-homepage
                 '''
             }
         }
