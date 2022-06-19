@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh 'echo "Starting the script"'
                 cleanWs()
-                git branch: 'main', url: 'https://github.com/gtrofimov13/jenkinsfile.git'
+                git branch: 'main', url: 'https://github.com/gtrofimov13/nicepage.git'
                 sh '''
                     echo "Hello World!"
                     echo $PWD
