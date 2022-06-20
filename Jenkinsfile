@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    }
     stages {
         stage('Pre-Build') {
             steps {
@@ -22,10 +23,29 @@ pipeline {
                 sh'''
                     echo "Build"
 
-                '''
+                    //Stop and remove containers
+                    sh 'docker-compose -f docker-compose.yml -p ${JOB_NAME} down'
+                    //Build the services
+                    sh 'docker-compose -f docker-compose.yml build'
+
+                    //Create and start the containers
+                    sh 'docker-compose -f docker-compose.yml -p ${JOB_NAME} up -d'
+
+                    '''
             }
         }
-        stage('Test'){
+        stage('Run Checks') {
+          parallel(
+            //Execute "some command" on running container my_app
+            'Tests': {
+              sh 'docker-compose -f docker-compose.yml -p ${JOB_NAME} exec my_app sh -c "echo "Health Check!"'
+            },
+
+            'Scan': {
+              sh 'docker-compose -f docker-compose.yml -p ${JOB_NAME} exec my_app sh -c "ls -la /usr/share/nginx/html "' },
+
+          )
+        }stage('Test'){
             steps {
                 sh '''
                     echo "Test"
