@@ -26,6 +26,7 @@ pipeline {
                     //Stop and remove containers
                     sh 'docker-compose -f docker-compose.yml -p ${JOB_NAME} down'
                     //Build the services
+
                     sh 'docker-compose -f docker-compose.yml build'
 
                     //Create and start the containers
