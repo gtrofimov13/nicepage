@@ -46,7 +46,8 @@ pipeline {
               sh 'docker-compose -f docker-compose.yml -p ${JOB_NAME} exec my_app sh -c "ls -la /usr/share/nginx/html "' },
 
           )
-        }stage('Test'){
+        }
+        stage('Test'){
             steps {
                 sh '''
                     echo "Test"
