@@ -24,7 +24,7 @@ pipeline {
                     echo "Build"
 
                     //Stop and remove containers
-                    sh 'docker-compose -f docker-compose.yml -p ${JOB_NAME} down'
+                    //sh 'docker-compose -f docker-compose.yml -p ${JOB_NAME} down'
                     //Build the services
 
                     sh 'docker-compose -f docker-compose.yml build'
