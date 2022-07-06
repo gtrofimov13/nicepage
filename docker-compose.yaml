@@ -3,6 +3,7 @@ services:
     static-homepage:
         image: nginx:alpine
         container_name: static-homepage
+        user: nginx
         ports:
             - 8090:80
         networks:
