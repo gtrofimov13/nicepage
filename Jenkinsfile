@@ -22,7 +22,6 @@ pipeline {
                 sh'''
                     echo "Build"
                     docker-compose down
-                    docker-compose -f build
 
                     '''
             }
