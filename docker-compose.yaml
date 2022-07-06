@@ -5,11 +5,3 @@ services:
         container_name: static-homepage
         ports:
             - 8090:80
-        networks:
-            - nginx
-        volumes:
-            - ./src:/usr/share/nginx/html
-networks:
-    nginx:
-        external: true
-        name: nginx
