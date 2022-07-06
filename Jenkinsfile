@@ -5,7 +5,6 @@ pipeline {
             steps {
                 sh 'echo "Starting the script"'
                 cleanWs()
-                git config --global core.autocrlf false
                 git branch: 'main', url: 'https://github.com/gtrofimov13/nicepage.git'
                 sh '''
                     echo "Hello World!"
