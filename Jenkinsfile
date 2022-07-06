@@ -22,6 +22,7 @@ pipeline {
                 sh'''
                     echo "Build"
                     docker-compose down
+                    docker-compose build static-homepage
 
                     '''
             }
