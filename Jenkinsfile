@@ -5,6 +5,7 @@ pipeline {
             steps {
                 sh 'echo "Starting the script"'
                 cleanWs()
+                git config --global core.autocrlf false
                 git branch: 'main', url: 'https://github.com/gtrofimov13/nicepage.git'
                 sh '''
                     echo "Hello World!"
@@ -21,8 +22,9 @@ pipeline {
             steps {
                 sh'''
                     echo "Build"
-                    sh 'docker-compose down'
-                    sh 'docker-compose up -d'
+                    docker-compose down
+                    docker-compose -f docker-compose.yml build
+
                     '''
             }
         }
@@ -37,7 +39,7 @@ pipeline {
             steps {
                sh'''
                   echo "Deploying"
-                  //docker-compose up -d --no-deps --build static-homepage
+                  docker-compose up -d --no-deps --build static-homepage
                 '''
             }
         }
