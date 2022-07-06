@@ -21,12 +21,10 @@ pipeline {
             steps {
                 sh'''
                     echo "Build"
-
-                    //Stop and remove containers
                     sh 'docker-compose down'
-                    //Build the services
-                    //Create and start the containers
-                    sh 'docker-compose up -d'
+                    sh 'docker-compose -f docker-compose.yml build'
+                    sh 'docker-compose -f docker-compose.yml -p ${JOB_NAME} up -d'
+
                     '''
             }
         }
