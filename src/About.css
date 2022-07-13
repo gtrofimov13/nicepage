@@ -10,6 +10,7 @@
 .u-section-1 .u-image-1 {
   min-height: 400px;
   background-image: url("images/sunset.png");
+  background-position: 50% 50%;
 }
 
 .u-section-1 .u-container-layout-1 {
