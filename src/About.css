@@ -9,7 +9,7 @@
 
 .u-section-1 .u-image-1 {
   min-height: 400px;
-  background-image: url("images/sunset.png");
+  background-image: url("images/logo.png");
   background-position: 50% 50%;
 }
 
@@ -34,6 +34,11 @@
   margin-left: 0;
   margin-right: auto;
   margin-bottom: 0;
+}
+
+.u-section-1 .u-btn-1 {
+  background-image: none;
+  padding: 0;
 }
 
 @media (max-width: 1199px) {
